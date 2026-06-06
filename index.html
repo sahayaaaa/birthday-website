@@ -141,9 +141,32 @@ function nextReason() {
         showSong();
     }
 }
-</script>
-  let songIndex = 0;
-let stage = "reasons"; // reasons → songs
+<script>
+let current = -1;
+let songIndex = 0;
+let stage = "reasons";
+
+const reasons = [
+    "You're cute in a way that always makes me smile.",
+    "You're one of the kindest people I've ever met.",
+    "You never leave people on seen because you genuinely care.",
+    "I love how much you love and respect your mom.",
+    "The way you talk is adorable.",
+    "Your voice can instantly make my day better.",
+    "I melt every time you sing.",
+    "I still think about the first time we met and how nervous we both were.",
+    "You make me feel loved even through a screen.",
+    "You're always there when I need you.",
+    "I love your silly tone when you talk.",
+    "Your meme references never fail to make me laugh.",
+    "You always know how to comfort me.",
+    "You're patient with me.",
+    "You never judge me.",
+    "You have such a gentle heart.",
+    "Being with you feels safe.",
+    "You're the biggest green flag I've ever met.",
+    "Out of all the reasons, my favorite one is simply that you're my cutieee ❤️"
+];
 
 const songs = [
     {
@@ -159,7 +182,107 @@ const songs = [
         text: "Because it reminds me of us, our memories, and everything we share. It just feels like you."
     }
 ];
-  function showSong() {
+
+function nextReason() {
+
+    if (stage === "reasons") {
+
+        current++;
+
+        if (current < reasons.length) {
+
+            document.getElementById("reason-title").innerText =
+                "💌 Reason " + (current + 1) + " of 19";
+
+            document.getElementById("reason-text").innerText =
+                reasons[current];
+        }
+
+        if (current === reasons.length - 1) {
+            setTimeout(() => {
+                stage = "songs";
+                showSong();
+            }, 800);
+        }
+    }
+
+    else if (stage === "songs") {
+        songIndex++;
+        showSong();
+    }
+}
+<script>
+let current = -1;
+let songIndex = 0;
+let stage = "reasons";
+
+const reasons = [
+    "You're cute in a way that always makes me smile.",
+    "You're one of the kindest people I've ever met.",
+    "You never leave people on seen because you genuinely care.",
+    "I love how much you love and respect your mom.",
+    "The way you talk is adorable.",
+    "Your voice can instantly make my day better.",
+    "I melt every time you sing.",
+    "I still think about the first time we met and how nervous we both were.",
+    "You make me feel loved even through a screen.",
+    "You're always there when I need you.",
+    "I love your silly tone when you talk.",
+    "Your meme references never fail to make me laugh.",
+    "You always know how to comfort me.",
+    "You're patient with me.",
+    "You never judge me.",
+    "You have such a gentle heart.",
+    "Being with you feels safe.",
+    "You're the biggest green flag I've ever met.",
+    "Out of all the reasons, my favorite one is simply that you're my cutieee ❤️"
+];
+
+const songs = [
+    {
+        title: "🎵 Golden Brown",
+        text: "Because it's basically your theme song at this point. Not just for me—anyone who knows you would think of you the moment they hear it."
+    },
+    {
+        title: "🎵 Can't Help Falling in Love",
+        text: "Of course this song reminds me of you. It's the song you used when you confessed to me for the first time, and it always takes me back to that moment."
+    },
+    {
+        title: "🎵 Naan Un",
+        text: "Because it reminds me of us, our memories, and everything we share. It just feels like you."
+    }
+];
+
+function nextReason() {
+
+    if (stage === "reasons") {
+
+        current++;
+
+        if (current < reasons.length) {
+
+            document.getElementById("reason-title").innerText =
+                "💌 Reason " + (current + 1) + " of 19";
+
+            document.getElementById("reason-text").innerText =
+                reasons[current];
+        }
+
+        if (current === reasons.length - 1) {
+            setTimeout(() => {
+                stage = "songs";
+                showSong();
+            }, 800);
+        }
+    }
+
+    else if (stage === "songs") {
+        songIndex++;
+        showSong();
+    }
+}
+
+function showSong() {
 
     if (songIndex < songs.length) {
 
@@ -178,5 +301,5 @@ const songs = [
             "Now onto something else I made for you...";
     }
 }
-</body>
-</html>
+</script>
+
