@@ -5,12 +5,7 @@
 
     <style>
         body {
-            background: linear-gradient(
-                to bottom,
-                #0f172a,
-                #172554,
-                #1e293b
-            );
+            background: linear-gradient(to bottom, #0f172a, #172554, #1e293b);
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
@@ -26,6 +21,7 @@
             border: 1px solid rgba(255,255,255,0.15);
             backdrop-filter: blur(12px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            margin-top: 40px;
         }
 
         h1 {
@@ -45,57 +41,41 @@
             font-size: 16px;
             background: #f8c8dc;
             color: #1e293b;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         .next-btn:hover {
             transform: translateY(-2px);
-        }
-
-        #reason-card {
-            margin-top: 120px;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- 💌 Intro -->
+    <!-- 💙 Intro -->
     <div class="card">
         <h1>🎂 Happy 19th Birthday THRIBHUVAN ❤️</h1>
-
         <p>Welcome to a little corner of the internet made just for you.</p>
         <p>Thank you for being such an important part of my life.</p>
     </div>
 
-    <!-- 💌 Reason + Song Card -->
-    <div id="reason-card" class="card">
-        <h2 id="reason-title">💌 A Little Note For You</h2>
-
-        <p id="reason-text">
-            Click Next ❤️ to start your journey
-        </p>
-
-        <button class="next-btn" onclick="nextReason()">
-            Next ❤️
-        </button>
+    <!-- 💌 Main Card -->
+    <div class="card">
+        <h2 id="title">💌 A Little Note For You</h2>
+        <p id="text">Click Next ❤️ to begin</p>
+        <button class="next-btn" onclick="next()">Next ❤️</button>
     </div>
-    <div id="song-card" class="card" style="display:none; margin-top: 80px;">
-    <h2 id="song-title">🎵 Songs That Remind Me Of You</h2>
 
-    <p id="song-text">
-        Click Next Song ❤️ to start
-    </p>
-
-    <button class="next-btn" onclick="nextSong()">
-        Next Song ❤️
-    </button>
-</div>
+    <!-- 🎵 SONG CARD (hidden initially) -->
+    <div id="song-card" class="card" style="display:none;">
+        <h2 id="song-title">🎵 Songs That Remind Me Of You</h2>
+        <p id="song-text">Click Next Song ❤️</p>
+        <button class="next-btn" onclick="nextSong()">Next Song ❤️</button>
+    </div>
 
     <script>
-        let current = -1;
-        let songIndex = 0;
-        let stage = "reasons";
+        // 💌 REASONS
+        let index = -1;
 
         const reasons = [
             "You're cute in a way that always makes me smile.",
@@ -119,6 +99,9 @@
             "Out of all the reasons, my favorite one is simply that you're my cutieee ❤️"
         ];
 
+        // 🎵 SONGS
+        let songIndex = -1;
+
         const songs = [
             {
                 title: "🎵 Golden Brown",
@@ -134,90 +117,52 @@
             }
         ];
 
-        function nextReason() {
+        let stage = "reasons";
+
+        function next() {
 
             if (stage === "reasons") {
 
-                current++;
+                index++;
 
-                if (current < reasons.length) {
+                if (index < reasons.length) {
+                    document.getElementById("title").innerText =
+                        "💌 Reason " + (index + 1) + " of 19";
 
-                    document.getElementById("reason-title").innerText =
-                        "💌 Reason " + (current + 1) + " of 19";
-
-                    document.getElementById("reason-text").innerText =
-                        reasons[current];
+                    document.getElementById("text").innerText =
+                        reasons[index];
                 }
 
-                if (current === reasons.length - 1) {
+                if (index === reasons.length - 1) {
                     setTimeout(() => {
+                        stage = "songs";
                         document.getElementById("song-card").style.display = "block";
                     }, 800);
                 }
             }
-
-            else if (stage === "songs") {
-                songIndex++;
-                showSong();
-            }
         }
 
-        function showSong() {
+        function nextSong() {
+
+            songIndex++;
 
             if (songIndex < songs.length) {
 
-                document.getElementById("reason-title").innerText =
+                document.getElementById("song-title").innerText =
                     songs[songIndex].title;
 
-                document.getElementById("reason-text").innerText =
+                document.getElementById("song-text").innerText =
                     songs[songIndex].text;
             }
 
             else {
-                document.getElementById("reason-title").innerText =
+                document.getElementById("song-title").innerText =
                     "💙 That's it, Thrii...";
 
-                document.getElementById("reason-text").innerText =
+                document.getElementById("song-text").innerText =
                     "Now onto something else I made for you...";
             }
         }
-        let songIndex = 0;
-
-const songs = [
-    {
-        title: "🎵 Golden Brown",
-        text: "Because it's your vibe. Anyone who knows you would think of you when they hear it."
-    },
-    {
-        title: "🎵 Can't Help Falling in Love",
-        text: "This reminds me of your confession and that moment."
-    },
-    {
-        title: "🎵 Naan Un",
-        text: "It just feels like us and our memories."
-    }
-];
-
-function nextSong() {
-    songIndex++;
-
-    if (songIndex < songs.length) {
-
-        document.getElementById("song-title").innerText =
-            songs[songIndex].title;
-
-        document.getElementById("song-text").innerText =
-            songs[songIndex].text;
-    }
-
-    else {
-        document.getElementById("song-title").innerText =
-            "💙 That's it...";
-
-        document.getElementById("song-text").innerText =
-            "Now onto something else I made for you...";
-    }
-}
     </script>
 
 </body>
