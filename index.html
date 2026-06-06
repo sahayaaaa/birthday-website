@@ -45,6 +45,33 @@
         </p>
   
     </div>
-    
+    <div id="reason-card" class="card">
+    <h2>💌 A Little Note For You</h2>
+
+    <p id="reason-text">
+        Click the button below. I have 19 reasons to tell you. ❤️
+    </p>
+
+    <button onclick="nextReason()">
+        Next ❤️
+    </button>
+</div>
+
+<script>
+const reasons = [
+    "You're cute in a way that always makes me smile.",
+    "You're one of the kindest people I've ever met."
+];
+
+let current = -1;
+
+function nextReason() {
+    current++;
+
+    if (current < reasons.length) {
+        document.getElementById("reason-text").innerText = reasons[current];
+    }
+}
+</script>
 </body>
 </html>
