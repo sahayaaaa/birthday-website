@@ -46,7 +46,7 @@
   
     </div>
     <div id="reason-card" class="card" style="margin-top: 80px;">
-    <h2>💌 A Little Note For You</h2>
+    <h2 id="reason-title">💌 A Little Note For You</h2>
 
     <p id="reason-text">
         Here's the 19 reasons i like about you ❤️
@@ -86,11 +86,17 @@ function nextReason() {
     current++;
 
     if (current < reasons.length) {
-        document.getElementById("reason-text").innerText = reasons[current];
+
+        document.getElementById("reason-title").innerText =
+            "💌 Reason " + (current + 1) + " of 19";
+
+        document.getElementById("reason-text").innerText =
+            reasons[current];
     }
 
     if (current === reasons.length - 1) {
-        document.getElementById("reason-card").style.transform = "scale(1.05)";
+        document.getElementById("reason-card").style.transform =
+            "scale(1.05)";
     }
 }
 </script>
