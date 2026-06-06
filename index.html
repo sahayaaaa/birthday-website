@@ -1,305 +1,178 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+    <title>Happy Birthday Thrii ❤️</title>
+
     <style>
         body {
-    background: linear-gradient(
-        to bottom,
-        #0f172a,
-        #172554,
-        #1e293b
-    );
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 50px;
-}
+            background: linear-gradient(
+                to bottom,
+                #0f172a,
+                #172554,
+                #1e293b
+            );
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
 
-.card {
-    max-width: 700px;
-    margin: auto;
-    background: rgba(255,255,255,0.08);
-    padding: 30px;
-    border-radius: 28px;
-    border: 1px solid rgba(255,255,255,0.15);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-}
+        .card {
+            max-width: 700px;
+            margin: auto;
+            background: rgba(255,255,255,0.08);
+            padding: 30px;
+            border-radius: 28px;
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
 
-h1 {
-    font-size: 3rem;
-}
+        h1 {
+            font-size: 3rem;
+        }
 
-p {
-    font-size: 1.2rem;
-}
+        p {
+            font-size: 1.2rem;
+        }
 
-.next-btn {
-    margin-top: 20px;
-    padding: 12px 28px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 16px;
-    background: #f8c8dc;
-    color: #1e293b;
-    transition: all 0.3s ease;
-}
+        .next-btn {
+            margin-top: 20px;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            background: #f8c8dc;
+            color: #1e293b;
+            transition: all 0.3s ease;
+        }
 
-.next-btn:hover {
-    transform: translateY(-2px);
-}
+        .next-btn:hover {
+            transform: translateY(-2px);
+        }
 
-#reason-card {
-    margin-top: 120px;
-    backdrop-filter: blur(10px);
-}
+        #reason-card {
+            margin-top: 120px;
+        }
     </style>
 </head>
 
 <body>
 
+    <!-- 💌 Intro -->
     <div class="card">
-        <h1>🎂 Happy 19th Birthday 
-                  THRIBHUVAN❤️</h1>
+        <h1>🎂 Happy 19th Birthday THRIBHUVAN ❤️</h1>
 
-        <p>
-    Welcome to a little corner of the internet made just for you.
-        </p>
-
-        <p>
-            Thank you for being such an important part of my life.
-        </p>
-  
+        <p>Welcome to a little corner of the internet made just for you.</p>
+        <p>Thank you for being such an important part of my life.</p>
     </div>
-    <div id="reason-card" class="card" style="margin-top: 80px;">
-    <h2 id="reason-title">💌 A Little Note For You</h2>
 
-    <p id="reason-text">
-        Here's the 19 reasons i like about you ❤️
-    </p>
+    <!-- 💌 Reason + Song Card -->
+    <div id="reason-card" class="card">
+        <h2 id="reason-title">💌 A Little Note For You</h2>
 
-    <button class="next-btn" onclick="nextReason()">
-    Next ❤️
-</button>
-</div>
+        <p id="reason-text">
+            Click Next ❤️ to start your journey
+        </p>
 
-<script>
-const reasons = [
-    "You're cute in a way that always makes me smile.",
-    "You're one of the kindest people I've ever met.",
-    "You never leave people on seen because you genuinely care.",
-    "I love how much you love and respect your mom.",
-    "The way you talk is adorable.",
-    "Your voice can instantly make my day better.",
-    "I melt every time you sing.",
-    "I still think about the first time we met and how nervous we both were.",
-    "You make me feel loved even through a screen.",
-    "You're always there when I need you.",
-    "I love your silly tone when you talk.",
-    "Your meme references never fail to make me laugh.",
-    "You always know how to comfort me.",
-    "You're patient with me.",
-    "You never judge me.",
-    "You have such a gentle heart.",
-    "Being with you feels safe.",
-    "You're the biggest green flag I've ever met.",
-    "Out of all the reasons, my favorite one is simply that you're my cutieee ❤️"
-];
+        <button class="next-btn" onclick="nextReason()">
+            Next ❤️
+        </button>
+    </div>
 
-let current = -1;
+    <script>
+        let current = -1;
+        let songIndex = 0;
+        let stage = "reasons";
 
-function nextReason() {
+        const reasons = [
+            "You're cute in a way that always makes me smile.",
+            "You're one of the kindest people I've ever met.",
+            "You never leave people on seen because you genuinely care.",
+            "I love how much you love and respect your mom.",
+            "The way you talk is adorable.",
+            "Your voice can instantly make my day better.",
+            "I melt every time you sing.",
+            "I still think about the first time we met and how nervous we both were.",
+            "You make me feel loved even through a screen.",
+            "You're always there when I need you.",
+            "I love your silly tone when you talk.",
+            "Your meme references never fail to make me laugh.",
+            "You always know how to comfort me.",
+            "You're patient with me.",
+            "You never judge me.",
+            "You have such a gentle heart.",
+            "Being with you feels safe.",
+            "You're the biggest green flag I've ever met.",
+            "Out of all the reasons, my favorite one is simply that you're my cutieee ❤️"
+        ];
 
-    // 🌸 REASONS MODE
-    if (stage === "reasons") {
+        const songs = [
+            {
+                title: "🎵 Golden Brown",
+                text: "Because it's your vibe. Anyone who knows you would think of you when they hear it."
+            },
+            {
+                title: "🎵 Can't Help Falling in Love",
+                text: "This reminds me of your confession and that moment."
+            },
+            {
+                title: "🎵 Naan Un",
+                text: "It just feels like us and our memories."
+            }
+        ];
 
-        current++;
+        function nextReason() {
 
-        if (current < reasons.length) {
+            if (stage === "reasons") {
 
-            document.getElementById("reason-title").innerText =
-                "💌 Reason " + (current + 1) + " of 19";
+                current++;
 
-            document.getElementById("reason-text").innerText =
-                reasons[current];
-        }
+                if (current < reasons.length) {
 
-        // 🎯 switch to songs after 19
-        if (current === reasons.length - 1) {
-            setTimeout(() => {
-                stage = "songs";
+                    document.getElementById("reason-title").innerText =
+                        "💌 Reason " + (current + 1) + " of 19";
+
+                    document.getElementById("reason-text").innerText =
+                        reasons[current];
+                }
+
+                if (current === reasons.length - 1) {
+                    setTimeout(() => {
+                        stage = "songs";
+                        songIndex = 0;
+                        showSong();
+                    }, 800);
+                }
+            }
+
+            else if (stage === "songs") {
+                songIndex++;
                 showSong();
-            }, 800);
-        }
-    }
-
-    // 🎵 SONG MODE
-    else if (stage === "songs") {
-        songIndex++;
-        showSong();
-    }
-}
-<script>
-let current = -1;
-let songIndex = 0;
-let stage = "reasons";
-
-const reasons = [
-    "You're cute in a way that always makes me smile.",
-    "You're one of the kindest people I've ever met.",
-    "You never leave people on seen because you genuinely care.",
-    "I love how much you love and respect your mom.",
-    "The way you talk is adorable.",
-    "Your voice can instantly make my day better.",
-    "I melt every time you sing.",
-    "I still think about the first time we met and how nervous we both were.",
-    "You make me feel loved even through a screen.",
-    "You're always there when I need you.",
-    "I love your silly tone when you talk.",
-    "Your meme references never fail to make me laugh.",
-    "You always know how to comfort me.",
-    "You're patient with me.",
-    "You never judge me.",
-    "You have such a gentle heart.",
-    "Being with you feels safe.",
-    "You're the biggest green flag I've ever met.",
-    "Out of all the reasons, my favorite one is simply that you're my cutieee ❤️"
-];
-
-const songs = [
-    {
-        title: "🎵 Golden Brown",
-        text: "Because it's basically your theme song at this point. Not just for me—anyone who knows you would think of you the moment they hear it."
-    },
-    {
-        title: "🎵 Can't Help Falling in Love",
-        text: "Of course this song reminds me of you. It's the song you used when you confessed to me for the first time, and it always takes me back to that moment."
-    },
-    {
-        title: "🎵 Naan Un",
-        text: "Because it reminds me of us, our memories, and everything we share. It just feels like you."
-    }
-];
-
-function nextReason() {
-
-    if (stage === "reasons") {
-
-        current++;
-
-        if (current < reasons.length) {
-
-            document.getElementById("reason-title").innerText =
-                "💌 Reason " + (current + 1) + " of 19";
-
-            document.getElementById("reason-text").innerText =
-                reasons[current];
+            }
         }
 
-        if (current === reasons.length - 1) {
-            setTimeout(() => {
-                stage = "songs";
-                showSong();
-            }, 800);
+        function showSong() {
+
+            if (songIndex < songs.length) {
+
+                document.getElementById("reason-title").innerText =
+                    songs[songIndex].title;
+
+                document.getElementById("reason-text").innerText =
+                    songs[songIndex].text;
+            }
+
+            else {
+                document.getElementById("reason-title").innerText =
+                    "💙 That's it, Thrii...";
+
+                document.getElementById("reason-text").innerText =
+                    "Now onto something else I made for you...";
+            }
         }
-    }
+    </script>
 
-    else if (stage === "songs") {
-        songIndex++;
-        showSong();
-    }
-}
-<script>
-let current = -1;
-let songIndex = 0;
-let stage = "reasons";
-
-const reasons = [
-    "You're cute in a way that always makes me smile.",
-    "You're one of the kindest people I've ever met.",
-    "You never leave people on seen because you genuinely care.",
-    "I love how much you love and respect your mom.",
-    "The way you talk is adorable.",
-    "Your voice can instantly make my day better.",
-    "I melt every time you sing.",
-    "I still think about the first time we met and how nervous we both were.",
-    "You make me feel loved even through a screen.",
-    "You're always there when I need you.",
-    "I love your silly tone when you talk.",
-    "Your meme references never fail to make me laugh.",
-    "You always know how to comfort me.",
-    "You're patient with me.",
-    "You never judge me.",
-    "You have such a gentle heart.",
-    "Being with you feels safe.",
-    "You're the biggest green flag I've ever met.",
-    "Out of all the reasons, my favorite one is simply that you're my cutieee ❤️"
-];
-
-const songs = [
-    {
-        title: "🎵 Golden Brown",
-        text: "Because it's basically your theme song at this point. Not just for me—anyone who knows you would think of you the moment they hear it."
-    },
-    {
-        title: "🎵 Can't Help Falling in Love",
-        text: "Of course this song reminds me of you. It's the song you used when you confessed to me for the first time, and it always takes me back to that moment."
-    },
-    {
-        title: "🎵 Naan Un",
-        text: "Because it reminds me of us, our memories, and everything we share. It just feels like you."
-    }
-];
-
-function nextReason() {
-
-    if (stage === "reasons") {
-
-        current++;
-
-        if (current < reasons.length) {
-
-            document.getElementById("reason-title").innerText =
-                "💌 Reason " + (current + 1) + " of 19";
-
-            document.getElementById("reason-text").innerText =
-                reasons[current];
-        }
-
-        if (current === reasons.length - 1) {
-            setTimeout(() => {
-                stage = "songs";
-                showSong();
-            }, 800);
-        }
-    }
-
-    else if (stage === "songs") {
-        songIndex++;
-        showSong();
-    }
-}
-
-function showSong() {
-
-    if (songIndex < songs.length) {
-
-        document.getElementById("reason-title").innerText =
-            songs[songIndex].title;
-
-        document.getElementById("reason-text").innerText =
-            songs[songIndex].text;
-    }
-
-    else {
-        document.getElementById("reason-title").innerText =
-            "💙 That's it, Thrii...";
-
-        document.getElementById("reason-text").innerText =
-            "Now onto something else I made for you...";
-    }
-}
-</script>
-
+</body>
+</html>
