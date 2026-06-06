@@ -111,22 +111,72 @@ const reasons = [
 let current = -1;
 
 function nextReason() {
-    current++;
 
-    if (current < reasons.length) {
+    // 🌸 REASONS MODE
+    if (stage === "reasons") {
 
-        document.getElementById("reason-title").innerText =
-            "💌 Reason " + (current + 1) + " of 19";
+        current++;
 
-        document.getElementById("reason-text").innerText =
-            reasons[current];
+        if (current < reasons.length) {
+
+            document.getElementById("reason-title").innerText =
+                "💌 Reason " + (current + 1) + " of 19";
+
+            document.getElementById("reason-text").innerText =
+                reasons[current];
+        }
+
+        // 🎯 switch to songs after 19
+        if (current === reasons.length - 1) {
+            setTimeout(() => {
+                stage = "songs";
+                showSong();
+            }, 800);
+        }
     }
 
-    if (current === reasons.length - 1) {
-        document.getElementById("reason-card").style.transform =
-            "scale(1.05)";
+    // 🎵 SONG MODE
+    else if (stage === "songs") {
+        songIndex++;
+        showSong();
     }
 }
 </script>
+  let songIndex = 0;
+let stage = "reasons"; // reasons → songs
+
+const songs = [
+    {
+        title: "🎵 Golden Brown",
+        text: "Because it's basically your theme song at this point. Not just for me—anyone who knows you would think of you the moment they hear it."
+    },
+    {
+        title: "🎵 Can't Help Falling in Love",
+        text: "Of course this song reminds me of you. It's the song you used when you confessed to me for the first time, and it always takes me back to that moment."
+    },
+    {
+        title: "🎵 Naan Un",
+        text: "Because it reminds me of us, our memories, and everything we share. It just feels like you."
+    }
+];
+  function showSong() {
+
+    if (songIndex < songs.length) {
+
+        document.getElementById("reason-title").innerText =
+            songs[songIndex].title;
+
+        document.getElementById("reason-text").innerText =
+            songs[songIndex].text;
+    }
+
+    else {
+        document.getElementById("reason-title").innerText =
+            "💙 That's it, Thrii...";
+
+        document.getElementById("reason-text").innerText =
+            "Now onto something else I made for you...";
+    }
+}
 </body>
 </html>
