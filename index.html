@@ -80,6 +80,17 @@
             Next ❤️
         </button>
     </div>
+    <div id="song-card" class="card" style="display:none; margin-top: 80px;">
+    <h2 id="song-title">🎵 Songs That Remind Me Of You</h2>
+
+    <p id="song-text">
+        Click Next Song ❤️ to start
+    </p>
+
+    <button class="next-btn" onclick="nextSong()">
+        Next Song ❤️
+    </button>
+</div>
 
     <script>
         let current = -1;
@@ -140,9 +151,7 @@
 
                 if (current === reasons.length - 1) {
                     setTimeout(() => {
-                        stage = "songs";
-                        songIndex = 0;
-                        showSong();
+                        document.getElementById("song-card").style.display = "block";
                     }, 800);
                 }
             }
@@ -172,6 +181,43 @@
                     "Now onto something else I made for you...";
             }
         }
+        let songIndex = 0;
+
+const songs = [
+    {
+        title: "🎵 Golden Brown",
+        text: "Because it's your vibe. Anyone who knows you would think of you when they hear it."
+    },
+    {
+        title: "🎵 Can't Help Falling in Love",
+        text: "This reminds me of your confession and that moment."
+    },
+    {
+        title: "🎵 Naan Un",
+        text: "It just feels like us and our memories."
+    }
+];
+
+function nextSong() {
+    songIndex++;
+
+    if (songIndex < songs.length) {
+
+        document.getElementById("song-title").innerText =
+            songs[songIndex].title;
+
+        document.getElementById("song-text").innerText =
+            songs[songIndex].text;
+    }
+
+    else {
+        document.getElementById("song-title").innerText =
+            "💙 That's it...";
+
+        document.getElementById("song-text").innerText =
+            "Now onto something else I made for you...";
+    }
+}
     </script>
 
 </body>
